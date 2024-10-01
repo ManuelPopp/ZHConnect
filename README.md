@@ -41,6 +41,7 @@ A random subset is created from the existing PAs in combination with samples fro
 The following flowchart describes the sampling algorithm:
 `NSAMPLES`= N
 `CUMAREA` = Target area (total additional protected area for a future scenario)
+
 Patches are provided as polygons with an ID and an area.
 ```mermaid
 flowchart TD
