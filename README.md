@@ -25,14 +25,14 @@ flowchart TD
     E --> H
 ```
 
-Considerations:
+#### Considerations:
 - The number of samples N should be as large as possible.
 - However, computation time t(N) is a linear function with a positive slope. To limit computation effort, a reasonable value must be selected. Preliminary analyses showed relatively stable estimates when each pFPA was included in about 30 samples.
 - Connectivity metrics often use parameters. For Harary index, the relevant parameter is a maximum distance _d_ below which two patches are considered connected. A reasonable estimate of _d_ must be provided. For single-species analyses, the species-specific value may be obtained from the literature. For multi-species analyses, a small (but no too small) value can be used to ensure most species of interest are able to migrate across that distance.
 - Since we are using resistance maps, distance _d_ must be provided in the unit of cumulative cost across a path. Euclidean distance is converted to cumulative cost by 1) creating a graph with a high threshold value, 2) establishing a relationship between euclidean distance and cumulative cost within a relevant range, and 3) using the parameters to translate the selected euclidean distance value into a cumulative cost value.
 
-ad 1: Random subset
-- A random subset is created from the existing PAs in combination with samples from pFPAs.
+#### ad 1: Random subset
+A random subset is created from the existing PAs in combination with samples from pFPAs.
 
 The following flowchart describes the sampling algorithm:
 `NSAMPLES`= N
@@ -59,3 +59,16 @@ flowchart TD
   O --> E
   C -- No --> P[End]
 ```
+This algorithm is implemented in /rsc/sample_target_area.R
+
+#### ad 2: Graphab analysis
+The Graphab analysis consists of the following steps
+1. Create a project.
+   a) Select the respective sample raster as input landscape.
+   b) Habitat has the value 1, background the value 0.
+   b) Connexity is set to 8 (Queen's case).
+2. Create a complete linkset.
+   a) Provide the resistance map of the respective habitat type as cost raster.
+   b) Set the maximum link distance to _d_.
+4. Create a graph.
+5. Calculate the Δ metric for each patch within the sample.
