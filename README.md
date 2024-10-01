@@ -33,3 +33,26 @@ Considerations:
 
 ad 1: Random subset
 - A random subset is created from the existing PAs in combination with samples from pFPAs.
+```mermaid
+flowchart TD
+  A[Start] --> B[Initialize variables: pol_ids, pol_areas, cum_area]
+  B --> C{i < NSAMPLES?}
+  C -- Yes --> D[Initialize sampling]
+  D --> E[Check if cum_area < CUMAREA]
+  E -- Yes --> F[Select random row from remaining]
+  F --> G{Is pol_ids not empty?}
+  G -- Yes --> H{Is row id in pol_ids?}
+  H -- No --> I[Add row id and area to pol_ids and pol_areas]
+  H -- Yes --> J[Skip row, already in pol_ids]
+  G -- No --> I2[Initialize pol_ids and pol_areas with row id and area]
+  
+  I & I2 --> K[Update cum_area with sum(pol_areas)]
+  K --> L[Remove sampled row from remaining]
+  L --> M{Is remaining empty?}
+  M -- Yes --> N[Reset remaining to full set of polygons]
+  M -- No --> E
+  N --> O[Print 'Entire patch set was sampled']
+  O --> E
+  
+  C -- No --> P[End]
+```
