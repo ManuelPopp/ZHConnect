@@ -1,7 +1,7 @@
 # ZHConnect
 Connectivity analyses within Canton ZH
 
-```meremaid
+```mermaid
 flowchart TD
     subgraph E ["Workflow sample i;<br>i ∈ ℕ, i < N"]
         A["Existing PAs"] --> C[Sample]
