@@ -36,7 +36,7 @@ flowchart TD
 </p>
 Fig 1: The relationship between euclidean distance and cumulative cost is used to translate the maximum distance into a maximum cost value.
 
-See also[./py3/distance_conversion.py](https://github.com/ManuelPopp/ZHConnect/blob/main/py3/distance_conversion.py).
+See also [./py3/distance_conversion.py](https://github.com/ManuelPopp/ZHConnect/blob/main/py3/distance_conversion.py).
 
 #### ad 1: Random subset
 A random subset is created from the existing PAs in combination with samples from pFPAs.
