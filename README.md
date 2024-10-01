@@ -67,7 +67,7 @@ flowchart TD
   O --> E
   C -- No --> P[End]
 ```
-This algorithm is implemented in [./rsc/sample_target_area.R](https://github.com/ManuelPopp/ZHConnect/blob/main/rsc/sample_target_area.R).
+This algorithm is implemented in [./rsc/](https://github.com/ManuelPopp/ZHConnect/blob/main/rsc/sample_target_area.R)[sample_target_area.R](https://github.com/ManuelPopp/ZHConnect/blob/main/rsc/sample_target_area.R).
 
 #### ad 2: Graphab analysis
 The Graphab analysis consists of the following steps
