@@ -53,7 +53,7 @@ flowchart TD
   J --> L[Update cum_area]
   K --> L
   L --> M[Remove sampled patch from remaining patches]
-  M --> N{Is remaining patches = {}?}
+  M --> N{Is remaining patches = &#123 &#125?}
   N -- Yes --> O[Reset remaining to full set of polygons]
   N -- No --> E
   O --> E
