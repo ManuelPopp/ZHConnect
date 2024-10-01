@@ -49,8 +49,8 @@ flowchart TD
   B --> C{i < NSAMPLES?}
   C -- Yes --> D[Initialize sampling]
   D --> E{cum_area < CUMAREA?}
-  C -- No --> P[Increase i by 1]
-  P --> B
+  D -- No --> Z[Increase i by 1]
+  Z --> B
   E -- Yes --> F[Select random patch from the remaining patches]
   F --> G{Is pol_ids empty?}
   G -- Yes --> I[Initialize pol_ids and pol_areas]
