@@ -33,26 +33,29 @@ Considerations:
 
 ad 1: Random subset
 - A random subset is created from the existing PAs in combination with samples from pFPAs.
+
+The following flowchart describes the sampling algorithm:
+`NSAMPLES`= N
+`CUMAREA` = Target area (total additional protected area for a future scenario)
+Patches are provided as polygons with an ID and an area.
 ```mermaid
 flowchart TD
-  A[Start] --> B[Initialize variables: pol_ids, pol_areas, cum_area]
+  A[Start] --> B[Initialize variables<br>Remaining polygon IDs: pol_ids<br>Polygon areas: pol_areas<br>Cumulative area: cum_area = 0]
   B --> C{i < NSAMPLES?}
   C -- Yes --> D[Initialize sampling]
   D --> E{cum_area < CUMAREA?}
-  E -- Yes --> F[Select random row from remaining]
-  F --> G{Is pol_ids empty?}
-  G -- Yes --> I[Initialize pol_ids and pol_areas with row id and area]
-  G -- No --> H{Is row id in pol_ids?}
-  H -- No --> J[Add row id and area to pol_ids and pol_areas]
-  H -- Yes --> K[Skip row, already in pol_ids]
+  E -- Yes --> F[Select random patch from the remaining patches]
+  F --> G{Is pol_ids empty?<br>(No patches remain)}
+  G -- Yes --> I[Initialize pol_ids and pol_areas by bringing<br>the input polygon data set into a random order]
+  G -- No --> H{Is the sampled patch already in the sample (pol_ids)?}
+  H -- No --> J[Add the patch ID to pol_ids and its area to pol_areas]
+  H -- Yes --> K[Skip]
   J --> L[Update cum_area]
   K --> L
-  L --> M[Remove sampled row from remaining]
+  L --> M[Remove sampled patch from remaining patches]
   M --> N{Is remaining empty?}
-  N -- Yes --> O[Reset remaining to full set of polygons and print message]
+  N -- Yes --> O[Reset remaining to full set of polygons]
   N -- No --> E
   O --> E
-  C -- No --> P[End]
-  
   C -- No --> P[End]
 ```
