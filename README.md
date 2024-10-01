@@ -34,7 +34,9 @@ flowchart TD
 <p align="center">
   <img src="./fig/Distance_conversion.svg" alt="Relationship between euclidean distance and cumulative cost" width="300"/>
 </p>
-Fig 1: The relationship between euclidean distance and cumulative cost is used to translate the maximum distance into a maximum cost value. See also [./py3/](https://github.com/ManuelPopp/ZHConnect/blob/main/py3/distance_conversion.py)[distance_conversion.py](https://github.com/ManuelPopp/ZHConnect/blob/main/py3/distance_conversion.py).
+Fig 1: The relationship between euclidean distance and cumulative cost is used to translate the maximum distance into a maximum cost value.
+
+See also[./py3/distance_conversion.py](https://github.com/ManuelPopp/ZHConnect/blob/main/py3/distance_conversion.py).
 
 #### ad 1: Random subset
 A random subset is created from the existing PAs in combination with samples from pFPAs.
@@ -67,7 +69,7 @@ flowchart TD
   O --> E
   C -- No --> P[End]
 ```
-This algorithm is implemented in [./rsc/](https://github.com/ManuelPopp/ZHConnect/blob/main/rsc/sample_target_area.R)[sample_target_area.R](https://github.com/ManuelPopp/ZHConnect/blob/main/rsc/sample_target_area.R).
+This algorithm is implemented in [./rsc/sample_target_area.R](https://github.com/ManuelPopp/ZHConnect/blob/main/rsc/sample_target_area.R).
 
 #### ad 2: Graphab analysis
 The Graphab analysis consists of the following steps
