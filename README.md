@@ -71,11 +71,11 @@ This algorithm is implemented in /rsc/sample_target_area.R
 #### ad 2: Graphab analysis
 The Graphab analysis consists of the following steps
 1. Create a project.
-   a) Select the respective sample raster as input landscape.
-   b) Habitat has the value 1, background the value 0.
-   b) Connexity is set to 8 (Queen's case).
+   - a) Select the respective sample raster as input landscape.
+   - b) Habitat has the value 1, background the value 0.
+   - c) Connexity is set to 8 (Queen's case).
 2. Create a complete linkset.
-   a) Provide the resistance map of the respective habitat type as cost raster.
-   b) Set the maximum link distance to _d_.
+   - a) Provide the resistance map of the respective habitat type as cost raster.
+   - b) Set the maximum link distance to _d_.
 4. Create a graph.
 5. Calculate the Δ metric for each patch within the sample.
