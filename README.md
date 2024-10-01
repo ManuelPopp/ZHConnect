@@ -31,6 +31,10 @@ flowchart TD
 - Connectivity metrics often use parameters. For Harary index, the relevant parameter is a maximum distance _d_ below which two patches are considered connected. A reasonable estimate of _d_ must be provided. For single-species analyses, the species-specific value may be obtained from the literature. For multi-species analyses, a small (but no too small) value can be used to ensure most species of interest are able to migrate across that distance.
 - Since we are using resistance maps, distance _d_ must be provided in the unit of cumulative cost across a path. Euclidean distance is converted to cumulative cost by 1) creating a graph with a high threshold value, 2) establishing a relationship between euclidean distance and cumulative cost within a relevant range, and 3) using the parameters to translate the selected euclidean distance value into a cumulative cost value.
 
+<p align="center">
+  <img src="./fig/Distance_conversion.svg" alt="Relationship between euclidean distance and cumulative cost" width="300"/>
+</p>
+
 #### ad 1: Random subset
 A random subset is created from the existing PAs in combination with samples from pFPAs.
 
