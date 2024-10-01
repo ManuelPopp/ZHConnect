@@ -40,20 +40,20 @@ The following flowchart describes the sampling algorithm:
 Patches are provided as polygons with an ID and an area.
 ```mermaid
 flowchart TD
-  A[Start] --> B[Initialize variables<br>Remaining polygon IDs: pol_ids<br>Polygon areas: pol_areas<br>Cumulative area: cum_area = 0]
+  A[Start] --> B[Initialize variables<br>Polygon IDs: pol_ids<br>Polygon areas: pol_areas<br>Cumulative area: cum_area = 0]
   B --> C{i < NSAMPLES?}
   C -- Yes --> D[Initialize sampling]
   D --> E{cum_area < CUMAREA?}
   E -- Yes --> F[Select random patch from the remaining patches]
   F --> G{Is pol_ids empty?}
-  G -- Yes --> I[Initialize pol_ids and pol_areas by bringing<br>the input polygon data set into a random order]
+  G -- Yes --> I[Initialize pol_ids and pol_areas]
   G -- No --> H{Is the sampled patch already in the sample=pol_ids?}
   H -- No --> J[Add the patch ID to pol_ids and its area to pol_areas]
   H -- Yes --> K[Skip]
   J --> L[Update cum_area]
   K --> L
   L --> M[Remove sampled patch from remaining patches]
-  M --> N{Is remaining empty?}
+  M --> N{Is remaining patches = {}?}
   N -- Yes --> O[Reset remaining to full set of polygons]
   N -- No --> E
   O --> E
