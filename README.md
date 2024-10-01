@@ -47,7 +47,7 @@ flowchart TD
   E -- Yes --> F[Select random patch from the remaining patches]
   F --> G{Is pol_ids empty?}
   G -- Yes --> I[Initialize pol_ids and pol_areas by bringing<br>the input polygon data set into a random order]
-  G -- No --> H{Is the sampled patch already in the sample (pol_ids)?}
+  G -- No --> H{Is the sampled patch already in the sample=pol_ids?}
   H -- No --> J[Add the patch ID to pol_ids and its area to pol_areas]
   H -- Yes --> K[Skip]
   J --> L[Update cum_area]
