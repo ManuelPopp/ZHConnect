@@ -28,10 +28,16 @@ patches <- terra::rast(f_pat_all) %>%
     area = terra::expanse(., unit = "ha")
   )
 
-for (f_scenario_map in f_scenario_maps) {
-  scenario <- terra::rast(f_scenario_map) %>%
-    terra::project(raster_template, method = "near")
-  
+for (f_scenario_map in c(f_scenario_maps, "baseline")) {
+  if (f_scenario_map == "baseline") {
+    scenario <- protected_areas %>%
+      terra::rasterize(
+        raster_template
+      )
+  } else {
+    scenario <- terra::rast(f_scenario_map) %>%
+      terra::project(raster_template, method = "near")
+  }
   
   pixelarea <- do.call("*", as.list(terra::res(scenario))) / 1e4
   
@@ -56,6 +62,25 @@ for (f_scenario_map in f_scenario_maps) {
       overwrite = TRUE
       )
   
+  if (f_scenario_map == "baseline") {
+    file.copy(
+      file.path(
+        dir_dst,
+        paste0(
+          tools::file_path_sans_ext(basename(f_scenario_map)),
+          "_gridbased.tif"
+        )
+      ),
+      file.path(
+        dir_dst,
+        paste0(
+          tools::file_path_sans_ext(basename(f_scenario_map)),
+          "_patchbased.tif"
+        )
+      )
+    )
+    next
+  }
   # Extract patch-level overlap with top 9 percent suitability
   patch_suitabilities <- terra::extract(
     scenario, patches, fun = "mean", exact = TRUE
